@@ -151,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
                // y.setText("经度为: " + Integer.valueOf(gg.pts.size()).toString());
 
             }
@@ -165,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
                 GPS.drawthepath=true;
                     GPS.startflag=false;
                     gg=new getGps();
-                gg.start();}
+                   gg.start();}
                 else
                 {
                     GPS.drawthepath=false;
@@ -261,10 +260,10 @@ public class MainActivity extends AppCompatActivity {
                 msgg.obj=inf;
                 mhandle.sendMessage(msgg);
                 GPS.dd=new Date();
-                hh.put("ll", Long.valueOf(GPS.dd.getTime()).toString());
+                hh.put("name", "服务器时间为："+Long.valueOf(GPS.dd.getTime()).toString()+"\r\n");
 
                 try {
-                    boolean kk=sendlocation.sendGetRequest(hh,"UTF-8");
+                    boolean kk=sendlocation.sendGetRequest(hh);
                     Log.e("服务器介绍",Boolean.valueOf(kk).toString());
                 }
                 catch (Exception e){
@@ -283,11 +282,11 @@ public class MainActivity extends AppCompatActivity {
                     Log.e("yic",e.toString());
                 }
                 try {
-                    Thread.sleep(1500);
+                    Thread.sleep(2000);
 
                 }
                 catch (Exception e){
-
+                    Log.e("sleep",e.toString());
                 }
             }
         }
